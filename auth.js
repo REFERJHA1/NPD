@@ -1,7 +1,7 @@
 (function () {
   const STORAGE_KEY = "lifeos_auth_state";
   const DATE_KEY = "lifeos_selected_date";
-  const MODERATOR_PASSWORD = "Modern@456";
+  const MODERATOR_PASSWORD = "Rahul@123";
   const USERS = [
     { value: "viewer", label: "Viewer (View Only)" },
     { value: "moderator", label: "Moderator" },
@@ -289,3 +289,4 @@
   renderHeaderDatePicker_();
   applyAuthMode(state);
 })();
+
