@@ -1,10 +1,10 @@
 (function () {
   const STORAGE_KEY = "lifeos_auth_state";
   const DATE_KEY = "lifeos_selected_date";
-  const Admin_PASSWORD = "Rahul@123";
+  const MODERATOR_PASSWORD = "Rahul@123";
   const USERS = [
     { value: "viewer", label: "Viewer (View Only)" },
-    { value: "Admin", label: "Admin" },
+    { value: "moderator", label: "Moderator" },
     { value: "other", label: "Other" }
   ];
 
@@ -53,7 +53,7 @@
   }
 
   function isAdmin(state) {
-    return String(state.role || "").toLowerCase() === "Admin";
+    return String(state.role || "").toLowerCase() === "moderator";
   }
 
   function clearState_() {
@@ -143,9 +143,9 @@
   }
 
   function authenticate_(userValue, enteredPassword) {
-    if (userValue === "Admin") {
-      if (enteredPassword === Admin_PASSWORD) {
-        return { ok: true, state: { signedIn: true, user: "Admin", role: "Admin" } };
+    if (userValue === "moderator") {
+      if (enteredPassword === MODERATOR_PASSWORD) {
+        return { ok: true, state: { signedIn: true, user: "moderator", role: "moderator" } };
       }
 
       return { ok: false, message: "Wrong password." };
@@ -199,9 +199,9 @@
     const statusEl = document.getElementById("authStatus");
 
     if (state && state.signedIn) {
-      userSelect.value = state.role === "Admin" ? "Admin" : state.user;
+      userSelect.value = state.role === "moderator" ? "moderator" : state.user;
       statusEl.textContent = isAdmin(state)
-        ? "Already signed in as Admin."
+        ? "Already signed in as Moderator."
         : `Already signed in as ${state.user}.`;
     }
 
@@ -257,7 +257,7 @@
     if (event.target && event.target.closest("main form")) {
       event.preventDefault();
       const statusEl = document.getElementById("authStatus");
-      if (statusEl) statusEl.textContent = "Read-only mode: switch to Admin to edit.";
+      if (statusEl) statusEl.textContent = "Read-only mode: switch to Moderator to edit.";
     }
   }, true);
 
@@ -270,7 +270,7 @@
       event.preventDefault();
       event.stopPropagation();
       const statusEl = document.getElementById("authStatus");
-      if (statusEl) statusEl.textContent = "Read-only mode: switch to Admin to edit.";
+      if (statusEl) statusEl.textContent = "Read-only mode: switch to Moderator to edit.";
     }
   }, true);
 
@@ -289,5 +289,3 @@
   renderHeaderDatePicker_();
   applyAuthMode(state);
 })();
-
-
