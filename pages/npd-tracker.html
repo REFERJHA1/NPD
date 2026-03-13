@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NPD Tracker</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="page-header">
+    <h1>NPD Tracker</h1>
+    <p id="streakBadge" class="streak-badge">Streak: --</p>
+    <nav class="top-nav">
+      <a href="../index.html">Dashboard</a>
+      <a href="./npd-parts.html">NPD Parts</a>
+      <a href="./npd-tracker.html" aria-current="page">NPD Tracker</a>
+      <a href="./npd-schedule.html">NPD Schedule</a>
+      <a href="./master-sheet.html">Master Sheet</a>
+    </nav>
+  </header>
+
+  <main class="page-grid">
+    <section class="card">
+      <h2>Add NPD Tracker Record</h2>
+      <form id="npdTrackerForm" class="stack-form">
+        <input id="partName" type="text" placeholder="Part Name" required>
+        <input id="partNo" type="text" placeholder="Part No." required>
+
+        <p class="subheading">Stage Target Dates</p>
+        <div class="inline-fields two-col">
+          <input id="dateFeasibility" type="date" required>
+          <input id="dateSignOff" type="date" required>
+          <input id="dateMaterialProcurement" type="date" required>
+          <input id="dateMaterialTest" type="date" required>
+          <input id="dateProductionPlan" type="date" required>
+          <input id="datePpapReredines" type="date" required>
+          <input id="dateDelivery" type="date" required>
+          <input id="dateFeedback" type="date" required>
+        </div>
+
+        <button type="submit">Add Tracker Record</button>
+      </form>
+      <p id="npdTrackerMessage" class="message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="card">
+      <div class="tracker-table-head">
+        <h2>NPD Tracker Table</h2>
+        <button id="checkFailedDatesBtn" type="button" class="button">Check Failed Dates</button>
+      </div>
+      <p class="muted">When a date fails (past date), you will be prompted for a new date. Old date stays visible with strike-through.</p>
+      <div class="table-wrap">
+        <table class="tracker-table" id="npdTrackerTable">
+          <thead>
+            <tr>
+              <th>S.No.</th>
+              <th>Part Name</th>
+              <th>Part No.</th>
+              <th>Feasiblity</th>
+              <th>Sign Off</th>
+              <th>Material Procurement</th>
+              <th>Material Test</th>
+              <th>Production Plan</th>
+              <th>PPAP Reredines</th>
+              <th>Delivery</th>
+              <th>Feedback</th>
+            </tr>
+          </thead>
+          <tbody id="npdTrackerBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="../auth.js"></script>
+  <script type="module" src="./npd-tracker.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raw Notes</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="page-header">
+    <h1>Raw Notes</h1>
+    <p id="streakBadge" class="streak-badge">Streak: --</p>
+    <nav class="top-nav">
+      <a href="../index.html">Dashboard</a>
+      <a href="./work.html">Work</a>
+      <a href="./personal.html">Personal</a>
+      <a href="./habits.html">Habits</a>
+      <a href="./journal.html">Journal</a>
+      <a href="./analytics.html">Analytics</a>
+      <a href="./timetable.html">TimeTable</a>
+      <a href="./raw-notes.html" aria-current="page">Raw Notes</a>
+    </nav>
+  </header>
+
+  <main class="page-grid">
+    <section class="card">
+      <h2>Add Raw Note</h2>
+      <p class="muted">Use this for unstructured thoughts. Add section/tag now, organize later.</p>
+      <form id="rawNotesForm" class="stack-form">
+        <input id="rawDate" type="date" required>
+        <select id="rawSection" required>
+          <option value="General" selected>General</option>
+          <option value="Work">Work</option>
+          <option value="Personal">Personal</option>
+          <option value="Ideas">Ideas</option>
+          <option value="Learning">Learning</option>
+          <option value="Follow-up">Follow-up</option>
+        </select>
+        <input id="rawTitle" type="text" placeholder="Title (optional)">
+        <textarea id="rawNote" rows="4" placeholder="Write your raw note..." required></textarea>
+        <input id="rawTags" type="text" placeholder="Tags (comma separated, optional)">
+        <input id="rawLinkedTask" type="text" placeholder="Linked task (optional)">
+        <button type="submit">Save Raw Note</button>
+      </form>
+      <p id="rawMessage" class="message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="card">
+      <h2>Raw Notes For Selected Working Date</h2>
+      <ul id="rawNotesList"></ul>
+    </section>
+  </main>
+
+  <script src="../auth.js"></script>
+  <script type="module" src="./raw-notes.js"></script>
+</body>
+</html>
